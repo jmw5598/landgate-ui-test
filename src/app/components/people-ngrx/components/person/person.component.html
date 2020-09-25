@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="age">Age</label>
-                        <input type="text" class="form-control" name="age" formControlName="age" [ngClass]="{ 'is-invalid': editForm?.age?.errors }" />
+                        <input type="text" class="form-control" name="age" formControlName="age" [ngClass]="{ 'is-invalid': editForm.get('age')?.errors }" />
                         <small class="text-danger" *ngIf="editForm.get('age')?.errors?.required">Age is required</small>
                         <small class="text-danger" *ngIf="editForm.get('age')?.errors?.pattern">Age must be numeric</small>
                     </div>
