@@ -14,7 +14,7 @@ export const initialState: State = {
 };
 
 
-export const reducer = createReducer(
+const _reducer = createReducer(
   initialState,
   on(PeopleActions.loadPeoples, state => state),
   on(PeopleActions.loadedPeople, (state, { people }) => {
@@ -34,4 +34,8 @@ export const reducer = createReducer(
     }
   })
 );
+
+export function reducer(state, action) {
+  return _reducer(state, action);
+};
 
