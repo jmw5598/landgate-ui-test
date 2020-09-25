@@ -24,7 +24,9 @@
     "@ngrx/store": "^10.0.0",
     "@ngrx/store-devtools": "^10.0.0",
     "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
     "ngrx": "0.0.1-security",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
