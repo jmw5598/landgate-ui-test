@@ -11,13 +11,9 @@ Add a way to select and then edit a individual person.  There should be options 
   </div>
   <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-4 " *ngFor="let person of (people$ | async)">
-        <div class="card border-0">
-          <div class="card-body">
-            <app-person 
-                [person]="person"
-                (onSave)="onSavePerson($event)"></app-person>
-          </div>
-        </div>
+        <app-person 
+            [person]="person"
+            (onSave)="onSavePerson($event)"></app-person>
       </div>
   </div>
 </div>
