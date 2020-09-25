@@ -1,0 +1,53 @@
+<div class="person">
+    <div class="avatar">
+        <!-- <img class="img-fluid" src="assets/images/default-avatar.svg"> -->
+    </div>
+    <ng-container *ngIf="!isEditing; else editFormTemplate">
+        <ul class="list-group my-4">
+            <li class="list-group-item"><strong>First Name</strong> <span class="float-right">{{ person?.firstName }}</span></li>
+            <li class="list-group-item"><strong>Last Name</strong> <span class="float-right">{{ person?.lastName }}</span></li>
+            <li class="list-group-item"><strong>Age</strong> <span class="float-right">{{ person?.age }}</span></li>
+            <li class="list-group-item"><strong>Title</strong> <span class="float-right">{{ person?.jobTitle }}</span></li>
+            <li class="list-group-item">
+                <button role="button" class="btn btn-primary col-12" (click)="editPerson()">Edit</button>
+            </li>
+        </ul>
+    </ng-container>
+    <ng-template #editFormTemplate>
+        <div class="card my-4">
+            <div class="card-body">
+                <form [formGroup]="editForm" (ngSubmit)="savePerson(editForm.value)" novalidate>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" name="firstName" formControlName="firstName" />
+                        <small class="text-danger" *ngIf="editForm.get('firstName')?.errors?.required">First name is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" name="lastName" formControlName="lastName" />
+                        <small class="text-danger" *ngIf="editForm.get('lastName')?.errors?.required">Last name is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="text" class="form-control" name="age" formControlName="age" [ngClass]="{ 'is-invalid': editForm?.age?.errors }" />
+                        <small class="text-danger" *ngIf="editForm.get('age')?.errors?.required">Age is required</small>
+                        <small class="text-danger" *ngIf="editForm.get('age')?.errors?.pattern">Age must be numeric</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobTitle">Title</label>
+                        <input type="text" class="form-control" name="jobTitle" formControlName="jobTitle" />
+                        <small class="text-danger" *ngIf="editForm.get('jobTitle')?.errors?.required">Job title is required</small>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-2">
+                            <button role="button" class="col-12 btn btn-primary" type="submit" [disabled]="editForm.invalid">Save</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button role="button" class="col-12 btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ng-template>
+</div>

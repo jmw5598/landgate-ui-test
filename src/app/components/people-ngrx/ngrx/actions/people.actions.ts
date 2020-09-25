@@ -12,6 +12,12 @@ export const loadedPeople = createAction(
   (people: PersonModel[]) => ({people})
 )
 
+export const updatePerson = createAction(
+  '[People] Update Person',
+  (person: PersonModel) => ({person})
+);
 
-
-
+export const updatePersonSuccess = createAction(
+  '[People] Update Person Success',
+  (person: PersonModel) => ({person})
+);
